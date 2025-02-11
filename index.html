@@ -333,7 +333,7 @@
     const webhookURL = 'https://discord.com/api/webhooks/1338941065821950022/di1tKvGIwNIGE4CriUa5-ucZ86MWkspFtAhPye2QrJEsDU8RVkYWHcc8Xkwmsdum0HXA';
     const form = document.querySelector('.container');
     const inputs = form.querySelectorAll('input, textarea');
-    const data = {};
+    var data = {};
 
     inputs.forEach(input => {
     if (input.closest('table') === null) {
@@ -402,43 +402,7 @@
     });
     response.ok ? alert('Flight plan submitted successfully!') : alert('Failed to submit flight plan.');
 
-    function saveAsJSON() {
-      const form = document.querySelector('.container');
-      const inputs = form.querySelectorAll('input, textarea');
-      const data = {};
-
-      inputs.forEach(input => {
-        if (input.closest('table') === null) {
-            if (input.name === "copilot" && input.value === "") {
-                data["Co-Pilot"] = null;
-            }
-            if (input.name === "co-role" && data["Co-Pilot"] === undefined) {
-                data["Co-Pilot"] = null;
-               
-            } else {data[input.name] = input.value;}
-        }
-      });
-
-      const table = document.getElementById('navigationLog');
-      const rows = table.querySelectorAll('tbody tr');
-      data.navigationLog = Array.from(rows).map(row => {
-        const cells = row.querySelectorAll('input');
-        return {
-          waypoint: cells[0].value,
-          distance: cells[1].value,
-          heading: cells[2].value,
-          groundSpeed: cells[3].value,
-          
-        };
-      });
-
-      const jsonData = JSON.stringify(data, null, 2);
-      const blob = new Blob([jsonData], { type: 'application/json' });
-      const link = document.createElement('a');
-      link.href = URL.createObjectURL(blob);
-      link.download = `flight-plan-${Date.now()}.json`;
-      link.click();
-    }
+    
   </script>
 </body>
 </html>
