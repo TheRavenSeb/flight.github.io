@@ -329,7 +329,7 @@
       const row = button.parentElement.parentElement;
       row.parentElement.removeChild(row);
     }
-    function submitwebhook(data){
+    async function submitwebhook(data){
     const webhookURL = 'https://discord.com/api/webhooks/1338941065821950022/di1tKvGIwNIGE4CriUa5-ucZ86MWkspFtAhPye2QrJEsDU8RVkYWHcc8Xkwmsdum0HXA';
     const form = document.querySelector('.container');
     const inputs = form.querySelectorAll('input, textarea');
@@ -390,9 +390,6 @@
             ]
         }]
     };
-}
-
-
     const response = await fetch(webhookURL, {
       method: 'POST',
       headers: {
@@ -402,7 +399,11 @@
     });
     response.ok ? alert('Flight plan submitted successfully!') : alert('Failed to submit flight plan.');
 
+}
+
+
     
+
   </script>
 </body>
 </html>
