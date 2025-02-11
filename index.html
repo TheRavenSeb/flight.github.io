@@ -377,7 +377,7 @@
             description: `Here is the flight plan for callsign ${data.flightName || '(Not specified)'}`,
             color: 0xFFA500,
             fields: [
-                { name: 'SessionID', value: data.date.toString() || '(Not specified)' },
+                { name: 'SessionID', value: data.date || '(Not specified)' },
                 { name: 'Session Map', value: data.sessionMap || '(Not specified)' },
                 { name: 'Flight Callsign', value: data.flightName || '(Not specified)' },
                 { name: 'Aircraft Type', value: data.aircraftType || '(Not specified)' },
