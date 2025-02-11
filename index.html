@@ -365,6 +365,8 @@
         data.navigationLog = data.navigationLog.map(nav => 
             `Waypoint: ${nav.waypoint}, Distance: ${nav.distance}, Heading: ${nav.heading}, Ground Speed: ${nav.groundSpeed}`
         ).join('\n');
+    }else {
+        data.navigationLog ="None";
     }
 
     // Create embed with proper field naming
@@ -375,7 +377,7 @@
             description: `Here is the flight plan for callsign ${data.flightName || '(Not specified)'}`,
             color: 0xFFA500,
             fields: [
-                { name: 'SessionID', value: data.date || '(Not specified)' },
+                { name: 'SessionID', value: data.date.toString() || '(Not specified)' },
                 { name: 'Session Map', value: data.sessionMap || '(Not specified)' },
                 { name: 'Flight Callsign', value: data.flightName || '(Not specified)' },
                 { name: 'Aircraft Type', value: data.aircraftType || '(Not specified)' },
@@ -386,7 +388,7 @@
                 { name: 'Total Fuel Onboard', value: data.totalFuel || '(Not specified)' },
                 { name: 'Bingo Fuel Level', value: data.bingoFuel || '(Not specified)' },
                 { name: 'Weather Briefing', value: data.weatherBriefing || '(Not specified)' },
-                { name: 'Navigation Log', value: data.navigationLog || 'None' },
+                { name: 'Navigation Log', value: data.navigationLog.toString() || 'None' },
                 { name: 'Pilot in Command', value: data.pic + " " + data["role"] || '(Not specified)' },
                 { name: 'Co-Pilot', value: data.copilot + " " + data["co-role"] || 'None' },
                 { name: 'Radio Frequencies', value: data.radioFrequencies || '(Not specified)' },
