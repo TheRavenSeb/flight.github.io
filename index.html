@@ -170,7 +170,7 @@
         </div>
         <div class="form-group">
           <label for="aircraftType">Aircraft Type:</label>
-          <select id="aircraftType">
+          <select id="aircraftType" name = "aircraftType">
             <option value="AV-42C">AV-42C</option>
             <option value="F/A-26B">F/A-26B</option>
             <option value="F-45A">F-45A</option>
@@ -336,6 +336,7 @@
     var data = {};
 
     inputs.forEach(input => {
+        
     if (input.closest('table') === null) {
         if (input.name === "copilot" && input.value === "") {
             data["Co-Pilot"] = null;
