@@ -297,7 +297,7 @@
 
     <!-- Save Button -->
     <div class="save-button">
-      <button type="button" onclick="saveAsJSON()">Save as JSON</button>
+      <button type="button" onclick="submitwebhook()">Submit Flight Plan</button>
     </div>
   </div>
 
@@ -329,6 +329,78 @@
       const row = button.parentElement.parentElement;
       row.parentElement.removeChild(row);
     }
+    function submitwebhook(data){
+    const webhookURL = 'https://discord.com/api/webhooks/890000000000000000';
+    const form = document.querySelector('.container');
+    const inputs = form.querySelectorAll('input, textarea');
+    const data = {};
+
+    inputs.forEach(input => {
+    if (input.closest('table') === null) {
+        if (input.name === "copilot" && input.value === "") {
+            data["Co-Pilot"] = null;
+        }
+        if (input.name === "co-role" && data["Co-Pilot"] === undefined) {
+            data["Co-Pilot"] = null;
+            
+        } else {data[input.name] = input.value;}
+    }
+    });
+
+    const table = document.getElementById('navigationLog');
+    const rows = table.querySelectorAll('tbody tr');
+    data.navigationLog = Array.from(rows).map(row => {
+    const cells = row.querySelectorAll('input');
+    if (cells[0].value === "") {
+        return null;
+    }
+    return {
+        waypoint: cells[0].value,
+        distance: cells[1].value,
+        heading: cells[2].value,
+        groundSpeed: cells[3].value,
+        
+    };
+    });
+    
+    const embedBody = {
+        embeds: [{
+            title: 'Flight Plan',
+            description: `Here is the flight plan for callsign ${data.flightName}.`,
+            color: 0xFFA500, // orange
+            fields: [
+                { name: 'SessionID', value: data.date.toString() },
+                { name: 'Session Map', value:  data.sessionMap.toString() },
+                { name: 'Flight Callsign', value: data.flightName.toString() },
+                { name: 'Aircraft Type', value: data.aircraftType.toString() },
+                { name: 'Cruising Altitude', value: data.altitude.toString() },
+                { name: 'Departure Location', value: data.departure.toString() },
+                { name: 'Destination', value: data.destination.toString() },
+                { name: 'Departure Time', value: data.departureTime.toString() },
+                { name: 'Total Fuel Onboard', value: data.totalFuel.toString() },
+                { name: 'Bingo Fuel Level', value: data.bingoFuel.toString() },
+                { name: 'Weather Briefing', value: data.weatherBriefing.toString() },
+                { name: 'Navigation Log', value: data.navigationLog.map(nav => `Waypoint: ${nav.waypoint}, Distance: ${nav.distance}, Heading: ${nav.heading}, Ground Speed: ${nav.groundSpeed}`).join('\n') },
+                { name: 'Pilot in Command', value: data.pic.toString() },
+                { name: 'Role', value: data.role.toString() },
+                { name: 'Co-Pilot', value: data.copilot.toString()||"None" },
+                { name: 'Role', value: data.co-role.toString()||"None" },
+                { name: 'Radio Frequencies', value: data.radioFrequencies.toString() },
+                { name: 'Additional Notes', value: data.additionalNotes.toString() },
+            ]
+        }]
+    };
+}
+
+
+    const response = await fetch(webhookURL, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(embedBody),
+    });
+    response.ok ? alert('Flight plan submitted successfully!') : alert('Failed to submit flight plan.');
 
     function saveAsJSON() {
       const form = document.querySelector('.container');
