@@ -233,7 +233,6 @@
             <th>Distance (NM)</th>
             <th>Heading</th>
             <th>Ground Speed (KTS)</th>
-            <th>ETE (Time)</th>
             <th>Actions</th>
           </tr>
         </thead>
@@ -267,7 +266,7 @@
             </select>
             
         </div>
-        <div class="form-group-copilot">
+        <div class="form-group" id="Co-Pilot">
           <label for="copilot">Co-Pilot:</label>
           <input type="text" id="copilot" name="copilot">
             <label for="co-role">Role:</label>
@@ -275,7 +274,7 @@
                 <option value="Pilot">Pilot </option>
                 <option value="Enforcer">Enforcer</option>
                 <option value="Intercepter">Intercepter</option>
-                </select>
+            </select>
         </div>
         </div>
     </div>
@@ -286,13 +285,13 @@
     <!-- Radio Frequencies Section -->
     <div class="section">
       <div class="section-title">Radio Frequencies</div>
-      <textarea id="radioFrequencies" name="radioFrequencies" rows="3" placeholder="Enter frequencies here..."></textarea>
+      <textarea id="radioFrequencies" name="radioFrequencies" rows="4" placeholder="Enter frequencies here..."></textarea>
     </div>
 
     <!-- Additional Notes Section -->
     <div class="section">
       <div class="section-title">Additional Notes</div>
-      <textarea id="additionalNotes" name="additionalNotes" rows="3" placeholder="Enter any additional notes here..."></textarea>
+      <textarea id="additionalNotes" name="additionalNotes" rows="4" placeholder="Enter any additional notes here..."></textarea>
     </div>
 
     <!-- Save Button -->
@@ -303,7 +302,7 @@
 
   <script>
     const aircraftType = document.getElementById('aircraftType');
-    const formGroupCopilot = document.querySelector('.form-group-copilot');
+    const formGroupCopilot = document.getElementById('Co-Pilot');
     aircraftType.addEventListener('change', function() {
       if (this.value === 'T-55') {
         formGroupCopilot.style.display = 'flex';
@@ -321,7 +320,6 @@
         <td><input type="number" name="distance" placeholder="NM"></td>
         <td><input type="text" name="heading" placeholder="°"></td>
         <td><input type="number" name="groundSpeed" placeholder="KTS"></td>
-        <td><input type="text" name="ete" placeholder="Time"></td>
         <td><button type="button" onclick="removeRow(this)">Remove</button></td>
       `;
     }
