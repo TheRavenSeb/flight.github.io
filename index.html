@@ -381,7 +381,7 @@
                 { name: 'Total Fuel Onboard', value: data.totalFuel.toString() },
                 { name: 'Bingo Fuel Level', value: data.bingoFuel.toString() },
                 { name: 'Weather Briefing', value: data.weatherBriefing.toString() },
-                { name: 'Navigation Log', value: data.navigationLog.map(nav => `Waypoint: ${nav.waypoint}, Distance: ${nav.distance}, Heading: ${nav.heading}, Ground Speed: ${nav.groundSpeed}`).join('\n') },
+                { name: 'Navigation Log', value: data.navigationLog.map(nav => `Waypoint: ${nav.waypoint}, Distance: ${nav.distance}, Heading: ${nav.heading}, Ground Speed: ${nav.groundSpeed}`).join('\n')|| "None" },
                 { name: 'Pilot in Command', value: data.pic.toString() },
                 { name: 'Role', value: data.role.toString() },
                 { name: 'Co-Pilot', value: data.copilot.toString()||"None" },
