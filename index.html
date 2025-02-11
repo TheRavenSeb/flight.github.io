@@ -195,10 +195,7 @@
           <label for="destination">Destination:</label>
           <input type="text" id="destination" name="destination">
         </div>
-        <div class="form-group">
-          <label for="departureTime">Departure Time:</label>
-          <input type="datetime-local" id="departureTime" name="departureTime">
-        </div>
+        
       </div>
     </div>
 
@@ -377,14 +374,13 @@
             description: `Here is the flight plan for callsign ${data.flightName || '(Not specified)'}`,
             color: 0xFFA500,
             fields: [
-                { name: 'SessionID', value: data.date || '(Not specified)' },
+                { name: 'SessionID', value: data.sessionID || '(Not specified)' },
                 { name: 'Session Map', value: data.sessionMap || '(Not specified)' },
                 { name: 'Flight Callsign', value: data.flightName || '(Not specified)' },
                 { name: 'Aircraft Type', value: data.aircraftType || '(Not specified)' },
                 { name: 'Cruising Altitude', value: data.altitude || '(Not specified)' },
                 { name: 'Departure Location', value: data.departure || '(Not specified)' },
                 { name: 'Destination', value: data.destination || '(Not specified)' },
-                { name: 'Departure Time', value: data.departureTime || '(Not specified)' },
                 { name: 'Total Fuel Onboard', value: data.totalFuel || '(Not specified)' },
                 { name: 'Bingo Fuel Level', value: data.bingoFuel || '(Not specified)' },
                 { name: 'Weather Briefing', value: data.weatherBriefing || '(Not specified)' },
@@ -393,7 +389,8 @@
                 { name: 'Co-Pilot', value: data.copilot + " " + data["co-role"] || 'None' },
                 { name: 'Radio Frequencies', value: data.radioFrequencies || '(Not specified)' },
                 { name: 'Additional Notes', value: data.additionalNotes || '(Not specified)' }
-            ]
+            ],
+            timestamp: new Date().toISOString()
         }]
     };
 
