@@ -363,7 +363,7 @@
         
     };
     });
-    if(data.navigationLog !== null) {
+    if(data.navigationLog[0] !== null) {
             data.navigationLog = data.navigationLog.map(nav => `Waypoint: ${nav.waypoint}, Distance: ${nav.distance}, Heading: ${nav.heading}, Ground Speed: ${nav.groundSpeed}`).join('\n')
             
            
