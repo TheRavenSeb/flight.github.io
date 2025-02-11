@@ -53,6 +53,12 @@
       margin-right: 10px;
       min-width: 200px;
     }
+    .form-group-copilot {
+      flex: 1;
+      margin-right: 10px;
+      min-width: 200px;
+      display: none;
+    }
 
     .form-group:last-child {
       margin-right: 0;
@@ -127,18 +133,43 @@
 <body>
   <div class="container">
     <h1>VFR Flight Planning Sheet</h1>
-
+    <!-- General Session Section -->
+     <div class="section">
+      <div class="section-title">General Information</div>
+      <div class="form-row">
+        <div class="form-group">
+          <label for="date">Date:</label>
+          <input type="date" id="date" name="date">
+        </div>
+        <div class="form-group">
+          <label for="sessionID">Session ID:</label>
+          <input type="text" id="sessionID" name="sessionID" placeholder="ABC123">
+        </div>
+        <div class="form-group">
+          <label for="sessionMap">Session Map:</label>
+          <input type="text" id="sessionMap" name="sessionMap" placeholder="GFA Forest">
+        </div>
+        </div>
     <!-- Flight Information Section -->
     <div class="section">
       <div class="section-title">Flight Information</div>
       <div class="form-row">
         <div class="form-group">
-          <label for="flightNumber">Flight Number:</label>
-          <input type="text" id="flightNumber" name="flightNumber">
+          <label for="flightName">Flight Callsign:</label>
+          <input type="text" id="flightName" name="flightName" placeholder="Crow 1-1">
         </div>
         <div class="form-group">
           <label for="aircraftType">Aircraft Type:</label>
-          <input type="text" id="aircraftType" name="aircraftType">
+          <select id="aircraftType">
+            <option value="AV-42C">AV-42C</option>
+            <option value="F/A-26B">F/A-26B</option>
+            <option value="F-45A">F-45A</option>
+            <option value="AH-94">AH-94</option>
+            <option value="T-55">T-55</option>
+            <option value="EF-24G">EF-24G</option>
+
+
+          </select>
         </div>
         <div class="form-group">
           <label for="altitude">Cruising Altitude:</label>
@@ -170,15 +201,9 @@
           <input type="number" id="totalFuel" name="totalFuel" placeholder="Gallons">
         </div>
         <div class="form-group">
-          <label for="fuelConsumption">Expected Fuel Consumption (GPH):</label>
-          <input type="number" id="fuelConsumption" name="fuelConsumption" placeholder="GPH">
+            <label for="bingoFuel">Bingo Fuel Level:</label>
+            <input type="number" id="bingoFuel" name="bingoFuel" placeholder="Gallons">
         </div>
-        <div class="form-group">
-          <label for="fuelReserve">Fuel Reserve Requirements:</label>
-          <input type="number" id="fuelReserve" name="fuelReserve" placeholder="Gallons">
-        </div>
-      </div>
-    </div>
 
     <!-- Weather Information Section -->
     <div class="section">
@@ -188,39 +213,6 @@
           <label for="weatherBriefing">Weather Briefing:</label>
           <textarea id="weatherBriefing" name="weatherBriefing" rows="4"></textarea>
         </div>
-        <div class="form-group">
-          <label for="departureMETAR">Departure METAR:</label>
-          <textarea id="departureMETAR" name="departureMETAR" rows="2"></textarea>
-        </div>
-      </div>
-      <div class="form-row">
-        <div class="form-group">
-          <label for="enrouteMETAR">En-route METAR:</label>
-          <textarea id="enrouteMETAR" name="enrouteMETAR" rows="2"></textarea>
-        </div>
-        <div class="form-group">
-          <label for="destinationMETAR">Destination METAR:</label>
-          <textarea id="destinationMETAR" name="destinationMETAR" rows="2"></textarea>
-        </div>
-      </div>
-      <div class="form-row">
-        <div class="form-group">
-          <label for="windsAloft">Winds Aloft (Altitude):</label>
-          <input type="text" id="windsAloft" name="windsAloft" placeholder="Altitude & Wind Speed">
-        </div>
-        <div class="form-group">
-          <label for="weatherHazards">Weather Hazards:</label>
-          <textarea id="weatherHazards" name="weatherHazards" rows="2"></textarea>
-        </div>
-      </div>
-    </div>
-
-    <!-- NOTAMs Section -->
-    <div class="section">
-      <div class="section-title">NOTAMs</div>
-      <textarea id="notams" name="notams" rows="4" placeholder="Enter NOTAMs here..."></textarea>
-    </div>
-
     <!-- Navigation and Route Section -->
     <div class="section">
       <div class="section-title">Navigation and Route</div>
@@ -255,56 +247,39 @@
       <textarea id="alternateAirports" name="alternateAirports" rows="2" placeholder="Enter alternate airports here..."></textarea>
     </div>
 
-    <!-- Performance and Risk Factors Section -->
-    <div class="section">
-      <div class="section-title">Performance and Risk Factors</div>
-      <div class="form-row">
-        <div class="form-group">
-          <label for="runwayRequirements">Runway Requirements:</label>
-          <textarea id="runwayRequirements" name="runwayRequirements" rows="2"></textarea>
-        </div>
-        <div class="form-group">
-          <label for="emergencyProcedures">Emergency Procedures:</label>
-          <textarea id="emergencyProcedures" name="emergencyProcedures" rows="2"></textarea>
-        </div>
-      </div>
-    </div>
+   
 
-    <!-- Time-Specific Information Section -->
-    <div class="section">
-      <div class="section-title">Time-Specific Information</div>
-      <div class="form-row">
-        <div class="form-group">
-          <label for="ete">Estimated Time Enroute:</label>
-          <input type="text" id="ete" name="ete" placeholder="Hours and Minutes">
-        </div>
-        <div class="form-group">
-          <label for="arrivalTime">Arrival Time:</label>
-          <input type="datetime-local" id="arrivalTime" name="arrivalTime">
-        </div>
-      </div>
-    </div>
+    
+    
 
     <!-- Pilot & Crew Information Section -->
     <div class="section">
       <div class="section-title">Pilot & Crew Information</div>
       <div class="form-row">
         <div class="form-group">
-          <label for="pic">Pilot in Command:</label>
+          <label for="pic">Pilot(s') in Command:</label>
           <input type="text" id="pic" name="pic">
+          <label for="role">Role:</label>
+          <select id="role" name="role">
+            <option value="Pilot">Pilot </option>
+            <option value="Enforcer">Enforcer</option>
+            <option value="Intercepter">Intercepter</option>
+            </select>
+            
         </div>
-        <div class="form-group">
-          <label for="passengers">Total Passengers:</label>
-          <input type="number" id="passengers" name="passengers">
+        <div class="form-group-copilot">
+          <label for="copilot">Co-Pilot:</label>
+          <input type="text" id="copilot" name="copilot">
+            <label for="role">Role:</label>
+            <select id="role" name="role">
+                <option value="Pilot">Pilot </option>
+                <option value="Enforcer">Enforcer</option>
+                <option value="Intercepter">Intercepter</option>
+                </select>
         </div>
-      </div>
-      <div class="form-row">
-        <div class="form-group">
-          <label for="passengerWeights">Passenger Weights:</label>
-          <input type="text" id="passengerWeights" name="passengerWeights" placeholder="Enter weights of passengers">
-        </div>
-      </div>
-    </div>
+
+        
+      
 
     <!-- Radio Frequencies Section -->
     <div class="section">
@@ -325,6 +300,16 @@
   </div>
 
   <script>
+    const aircraftType = document.getElementById('aircraftType');
+    const formGroupCopilot = document.querySelector('.form-group-copilot');
+    aircraftType.addEventListener('change', function() {
+      if (this.value === 'T-55') {
+        formGroupCopilot.style.display = 'flex';
+      } else {
+        formGroupCopilot.style.display = 'none';
+        
+      }
+    });
     function addRow() {
       const table = document.getElementById('navigationLog').getElementsByTagName('tbody')[0];
       const newRow = table.insertRow();
