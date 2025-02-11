@@ -387,7 +387,7 @@
                 { name: 'Total Fuel Onboard', value: data.totalFuel || '(Not specified)' },
                 { name: 'Bingo Fuel Level', value: data.bingoFuel || '(Not specified)' },
                 { name: 'Weather Briefing', value: data.weatherBriefing || '(Not specified)' },
-                { name: 'Navigation Log', value: data.navigationLog || 'None' },
+                { name: 'Navigation Log', value: data.navigationLog.toString() || 'None' },
                 { name: 'Pilot in Command', value: data.pic + " "+ data["role"] || '(Not specified)' },
                 { name: 'Co-Pilot', value: data.copilot + " "+ data["co-role"] || 'None' },
                 
