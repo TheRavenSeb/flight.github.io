@@ -398,12 +398,13 @@
     };
 
     try {
+        const body = JSON.stringify(embedBody);
         const response = await fetch(webhookURL, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify(embedBody)
+            body:body
         });
 
         if (!response.ok) {
