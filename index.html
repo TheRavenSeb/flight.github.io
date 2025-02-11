@@ -337,7 +337,13 @@
 
       inputs.forEach(input => {
         if (input.closest('table') === null) {
-          data[input.name] = input.value;
+            if (input.name === "copilot" && input.value === "") {
+                data["Co-Pilot"] = null;
+            }
+            if (input.name === "co-role" && data["Co-Pilot"] === undefined) {
+                data["Co-Pilot"] = null;
+               
+            } else {data[input.name] = input.value;}
         }
       });
 
