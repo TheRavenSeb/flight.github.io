@@ -363,8 +363,14 @@
         
     };
     });
+    if(data.navigationLog !== null) {
+            data.navigationLog = data.navigationLog.map(nav => `Waypoint: ${nav.waypoint}, Distance: ${nav.distance}, Heading: ${nav.heading}, Ground Speed: ${nav.groundSpeed}`).join('\n')
+            
+           
+        }
     
     const embedBody = {
+        
         embeds: [{
             title: 'Flight Plan',
             description: `Here is the flight plan for callsign ${data.flightName}.`,
@@ -381,7 +387,7 @@
                 { name: 'Total Fuel Onboard', value: data.totalFuel.toString() },
                 { name: 'Bingo Fuel Level', value: data.bingoFuel.toString() },
                 { name: 'Weather Briefing', value: data.weatherBriefing.toString() },
-                { name: 'Navigation Log', value: data.navigationLog.map(nav => `Waypoint: ${nav.waypoint}, Distance: ${nav.distance}, Heading: ${nav.heading}, Ground Speed: ${nav.groundSpeed}`).join('\n')|| "None" },
+                { name: 'Navigation Log', value: data.navigationLog|| "None" },
                 { name: 'Pilot in Command', value: data.pic.toString() },
                 { name: 'Role', value: data.role.toString() },
                 { name: 'Co-Pilot', value: data.copilot.toString()||"None" },
