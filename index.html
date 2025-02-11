@@ -369,7 +369,9 @@
 
     // Create embed with proper field naming
     const embedBody = {
-        embeds: [{
+       
+        embeds: {
+               
             title: 'Flight Plan',
             description: `Here is the flight plan for callsign ${data.flightName || '(Not specified)'}`,
             color: 0xFFA500,
@@ -392,7 +394,7 @@
                 { name: 'Radio Frequencies', value: data.radioFrequencies || '(Not specified)' },
                 { name: 'Additional Notes', value: data.additionalNotes || '(Not specified)' }
             ]
-        }]
+        }
     };
 
     try {
