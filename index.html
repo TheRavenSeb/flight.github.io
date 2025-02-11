@@ -266,7 +266,7 @@
             </select>
             
         </div>
-        <div class="form-group" style="display: none;" id="Co-Pilot">
+        <div class="form-group-copilot"  >
           <label for="copilot">Co-Pilot:</label>
           <textarea id="copilot" name="copilot" rows="3" placeholder="Enter Co-Pilot"></textarea>
             <label for="co-role">Role:</label>
@@ -303,7 +303,7 @@
 
   <script>
     const aircraftType = document.getElementById('aircraftType');
-    const formGroupCopilot = document.getElementById('Co-Pilot');
+    const formGroupCopilot = document.querySelector('.form-group-copilot');
     aircraftType.addEventListener('change', function() {
       if (this.value === 'T-55'|| this.value === 'AH-94') {
         formGroupCopilot.style.display = 'flex';
