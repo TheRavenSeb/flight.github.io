@@ -21,5 +21,6 @@ function getInfo(){
 
 // send info to the server
 function sendInfo(session, callsign, aircraft, departure, arrival, route, speed, altitude, tramsferFrequency){
+   
   
 }
