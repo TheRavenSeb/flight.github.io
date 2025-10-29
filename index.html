@@ -329,7 +329,7 @@
       row.parentElement.removeChild(row);
     }
     async function submitwebhook() {
-    const webhookURL = 'https://discord.com/api/webhooks/1341899347713064981/ZiD-94xnHnzG19OK1xhQdpayePG5HLtmL1drZ_gfqUmpMtldraHWEZw2dI8qC6zSdbaM';
+    const webhookURL = process.env.Discord_webhook;
     const form = document.querySelector('.container');
     const inputs = form.querySelectorAll('input, select, textarea');
     let data = {};
